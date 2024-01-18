@@ -5,6 +5,7 @@ import Register from './components/Register';
 import Recovery from './components/Recovery';
 import Reset from './components/Reset';
 import PageNotFound from './components/PageNotFound';
+import Password from './components/Password';
 
 import './App.css';
 
@@ -25,6 +26,10 @@ function App() {
     {
         path : '/reset',
         element : <Reset></Reset>
+    },
+    {
+        path : '/password',
+        element : <Password></Password>
     },
     {
         path : '/404',
