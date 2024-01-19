@@ -52,3 +52,31 @@ export const EmailAddressValidation = (values, props) => {
         errors.email = toast.error("Invalid Email Address");
     }
 }
+
+export const ProfileValidation = (values, props) => {
+    fnameValidate(values, props);
+    lnameValidate(values, props);
+    EmailAddressValidation(values, props);
+}
+
+
+export const fnameValidate = (values, props) => {
+    const errors = {};
+    if (!values.fname) {
+        errors.fname = toast.error('First Name is Required...!');
+    } else if (values.fname.includes(" ")) {
+        errors.fname = toast.error('Invalid First Name..!');
+    }
+
+    return errors;
+};
+export const lnameValidate = (values, props) => {
+    const errors = {};
+    if (!values.lname) {
+        errors.lname = toast.error('Last Name is Required...!');
+    } else if (values.fname.includes(" ")) {
+        errors.lname = toast.error('Invalid Last Name..!');
+    }
+
+    return errors;
+};
