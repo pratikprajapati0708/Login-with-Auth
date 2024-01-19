@@ -12,15 +12,15 @@ export const usernameValidate = (values, props /* only available when using with
 };
 
 export const passwordValidate = (values, props) => {
-    let regularExpression  = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
+    let regularExpression = /^[a-zA-Z0-9!@#$%^&*]{6,16}$/;
     const errors = {};
     if (!values.password) {
         errors.password = toast.error('Password Required...!');
     } else if (values.password.includes(" ")) {
         errors.password = toast.error('Wrong Password!');
-    } else if(!regularExpression.test(values.password)){
+    } else if (!regularExpression.test(values.password)) {
         errors.password = toast.error('password should contain special characters');
-    } else if(values.password.length < 6){
+    } else if (values.password.length < 6) {
         errors.password = toast.error('Password length should be greater than 6');
     }
 
@@ -34,3 +34,21 @@ export const passwordResetValidate = (values, props) => {
     }
     return errors;
 };
+
+//Validating Registration
+
+export const RegisterValidate = (values, props) => {
+    EmailAddressValidation(values, props);
+    usernameValidate(values, props);
+    passwordValidate(values, props);
+}
+
+export const EmailAddressValidation = (values, props) => {
+    const errors = {};
+    if (!values.email) {
+        errors.email = toast.error("Email Address is required !");
+    }
+    else if (values.email.includes(' ')) {
+        errors.email = toast.error("Invalid Email Address");
+    }
+}
