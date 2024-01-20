@@ -5,6 +5,7 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 import ConnectToDB from '../server/database/connection.js'
+import route from '../server/router/route.js';
 const app = express();
 
 //middleware
@@ -19,6 +20,9 @@ const port = 8080;
 app.get('/', (req, res) => {
   res.status(201).json("Home Get Request");
 })
+
+//api routes
+app.use('/api',route)
 
 //start server only we have valid connection
 ConnectToDB().then(() => {
